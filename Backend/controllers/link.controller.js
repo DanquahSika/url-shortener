@@ -5,6 +5,7 @@ export const newLink = async (req, res, next) => {
     try {
         // Add link to database
         const createLink = await linkModel.create({...req.body})
+        res.redirect('/')
 
         // return response
         res.status(201).json(createLink);
@@ -26,8 +27,10 @@ export const getAllLinks = async (req, res, next) => {
 };
 
 
-export const openLink = (req, res, next) => {
-
+export const openLink = async (req, res, next) => {
+  // get link from database
+  const getLink = await linkModel.find({...req.body})
+  res.redirect('/')
 
 }
 
