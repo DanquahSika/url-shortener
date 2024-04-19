@@ -1,7 +1,7 @@
 import React from 'react'
-import Barchart from '../components/dashboard/analytics/Barchart'
-import Charts from '../components/dashboard/analytics/Charts'
-import Sidebar from '../components/sidebar/Sidebar'
+import Barchart from '../components/analytics/Barchart'
+import Charts from '../components/analytics/Charts'
+
 import SidebarMain from '../components/sidebar/SidebarMain'
 
 const Analytics = () => {

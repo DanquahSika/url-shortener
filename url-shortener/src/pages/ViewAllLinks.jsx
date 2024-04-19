@@ -5,7 +5,7 @@ const AllLinks = () => {
   return (
     <div className="flex ">
       <SidebarMain />
-      Alllinks
+      
     </div>
   );
 };

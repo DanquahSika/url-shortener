@@ -1,7 +1,7 @@
 import React from "react";
 import Tracker from "../components/dashboard/tracker/Tracker";
 import SidebarMain from "../components/sidebar/SidebarMain";
-import LinksDashboard from "../components/dashboard/profile";
+import LinksDashboard from "../components/profile";
 
 const Dashboard = () => {
   return (

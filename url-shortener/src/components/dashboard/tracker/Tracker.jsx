@@ -1,5 +1,5 @@
 import React from 'react'
-import Barchart from '../analytics/Barchart'
+
 
 const Tracker = () => {
   return (
