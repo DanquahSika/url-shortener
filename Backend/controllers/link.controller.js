@@ -11,7 +11,7 @@ export const newLink = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-}
+};
 
 export const getAllLinks = async (req, res, next) => {
     try {
@@ -23,7 +23,7 @@ export const getAllLinks = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-}
+};
 
 
 export const openLink = (req, res, next) => {

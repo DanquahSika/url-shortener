@@ -1,18 +1,14 @@
 import React from "react";
-import Longlink from "../components/links/Longlink";
-import Shortlink from "../components/links/Shortlink";
-import Customize from "../components/links/Customize";
-import Customlink from "../components/links/Customlink";
+import SidebarMain from "../components/sidebar/SidebarMain";
+import Shortener from "../components/landingpage/Shortener";
 
 export const Links = () => {
-
   return (
-    <div>
-    <Longlink/>
-    <Shortlink/>
-    <Customize/>
-    <Customlink/>
-
+    <div className="flex ">
+      <SidebarMain />
+      <div>
+        <Shortener/>
+      </div>
     </div>
   );
-}
+};

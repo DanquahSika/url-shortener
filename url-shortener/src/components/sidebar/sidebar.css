@@ -9,9 +9,11 @@
 :root {
    --clr: #375c5d;
 }
+
 body {
    background: var(--clr);
 }
+
 section {
    position: relative;
    width: 100%;

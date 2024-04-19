@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import SidebarMain from "../components/sidebar/SidebarMain";
 
-const Profile = () => {
+const AllLinks = () => {
   return (
-    <div>Profile</div>
-  )
-}
+    <div className="flex ">
+      <SidebarMain />
+      Alllinks
+    </div>
+  );
+};
 
-export default Profile
+export default AllLinks;

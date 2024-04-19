@@ -1,14 +1,11 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Register from './components/register/Register';
 import Signpage from './pages/Signpage';
 import Dashboard from './pages/Dashboard';
 import { Links } from './pages/ShortenLinks';
-import Sidebar from './components/sidebar/Sidebar';
 import Analytics from './pages/Analytics';
-
-
-
+import Landing from './pages/Landing';
+import AllLinks from './pages/ViewAllLinks';
 
 
 
@@ -17,13 +14,15 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Register /> } />
-        <Route path='/sign' element={<Sidebar /> } />
-        <Route path='/home' element={<Links /> } />
+        <Route path='/' element={<Landing /> } />
+        <Route path='/sign' element={<Signpage /> } />
+        <Route path='/create' element={<Links /> } />
+        <Route path='/dashboard' element={<Dashboard /> } />
         <Route path='/analytics' element={<Analytics /> } />
+        <Route path='/track' element={<AllLinks/> } />
+        {/* <Route path='/sign' element={<SidebarMain /> } /> */}
       </Routes>
     </BrowserRouter>
-
   );
 }
 

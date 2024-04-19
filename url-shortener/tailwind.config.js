@@ -7,9 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        customRed: '#BA1A29',
-        customOrange: '#F97B08',
-        customBlack: '#1D1D1C',
+        customGreen: '#91CC7F',
+        customOrange: '#EF7415',
+        customBlack: '#0A0A05',
+        customBrown: '#4F4A45',
+        customHov: '#B8D699',
+        customOre: '#F8EEE1'
       },
     },
   },
