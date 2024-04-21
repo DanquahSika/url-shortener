@@ -20,16 +20,26 @@ const Register = () => {
         <div className="signin-signup">
           <form action="#" className="sign-in-form">
             <h2 className="title">Sign in</h2>
+            <div className="flex">
             <div className="input-field">
               <i className="fas fa-user" />
               <input type="text" placeholder="Username" />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-user" />
+              <input type="text" placeholder="Username" />
+            </div>
             </div>
             <div className="input-field">
               <i className="fas fa-lock" />
               <input type="password" placeholder="Password" />
             </div>
             {/* button to link */}
-            <button type="submit" className="btn-cta rounded-full" defaultValue="Sign up">
+            <button
+              type="submit"
+              className="btn-cta rounded-full"
+              defaultValue="Sign up"
+            >
               <Link to="/dashboard" className="btn">
                 Sign in
               </Link>
@@ -64,7 +74,11 @@ const Register = () => {
               <i className="fas fa-lock" />
               <input type="password" placeholder="Password" />
             </div>
-            <button type="submit" className="btn-cta rounded-full" defaultValue="Sign up">
+            <button
+              type="submit"
+              className="btn-cta rounded-full"
+              defaultValue="Sign up"
+            >
               <Link to="/create" className="btn">
                 Sign up
               </Link>
