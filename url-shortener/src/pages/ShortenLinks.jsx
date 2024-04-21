@@ -5,7 +5,7 @@ import Custom from "../components/Custom";
 
 export const Links = () => {
   return (
-    <div className="flex ">
+    <div className="flex">
       <SidebarMain />
       <div>
         <Shortener/>

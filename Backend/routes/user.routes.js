@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { loginUser, logoutUser, profile, registerUser } from "../controllers/user.controller.js";
+import { verifyToken } from "../middlewares/auth.js";
 
 
 // create user routes
@@ -11,9 +12,9 @@ router.post('/register',registerUser)
 
 router.post('/login', loginUser)
 
-router.post('/logout', logoutUser)
+router.post('/logout', verifyToken, logoutUser)
 
-router.post('/me', profile)
+router.post('/me', verifyToken, profile)
 
 
 export default router;

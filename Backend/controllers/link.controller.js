@@ -28,21 +28,54 @@ export const getAllLinks = async (req, res, next) => {
 
 
 export const openLink = async (req, res, next) => {
-  // get link from database
-  const getLink = await linkModel.find({...req.body})
-  res.redirect('/')
+    try {
+        const { shortcode } = req.params; 
+        const link = await linkModel.findOne({ shortCode: shortcode });
 
-}
+        if (!link) {
+            return res.status(404).json({ message: 'Link not found' });
+        }
+
+        // Increase click count
+        link.clicks++;
+        await link.save();
+
+        // Redirect to the original URL
+        res.redirect(link.originalUrl);
+    } catch (error) {
+        next(error);
+    }
+};
 
 
-export const updateLink = (req, res, next) => {
+export const updateLink = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const updatedLink = await linkModel.findByIdAndUpdate(id, req.body, { new: true });
 
+        if (!updatedLink) {
+            return res.status(404).json({ message: 'Link not found' });
+        }
 
-}
+        res.status(200).json(updatedLink);
+    } catch (error) {
+        next(error);
+    }
+};
 
+export const deleteLink = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const deletedLink = await linkModel.findByIdAndDelete(id);
 
-export const deleteLink = (req, res, next) => {
+        if (!deletedLink) {
+            return res.status(404).json({ message: 'Link not found' });
+        }
 
+        res.status(200).json({ message: 'Link deleted successfully' });
+    } catch (error) {
+        next(error);
+    }
+};
 
-}
 
