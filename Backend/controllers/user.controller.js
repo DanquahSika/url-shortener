@@ -64,7 +64,7 @@ export const loginUser = async (req, res) => {
     // Set user id is session
     req.session.user = { id: user._id };
     // Return response
-    return res.status(200).json({ message: "Login successful" });
+    return res.status(200).json({ message: "Login successful", user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

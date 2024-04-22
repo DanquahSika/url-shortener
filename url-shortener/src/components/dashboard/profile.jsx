@@ -119,7 +119,7 @@ const LinksDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://api.example.com/links');
+                const response = await axios.get('https://localhost:5173/links');
                 setLinks(response.data);
             } catch (error) {
                 console.error(error);
@@ -134,7 +134,7 @@ const LinksDashboard = () => {
     };
 
     return (
-        <div className="bg-zinc-100 font-sans leading-normal tracking-normal">
+        <div className="bg-zinc-100 font-sans leading-normal tracking-normal w-full overflow-y-none">
             <div className="contain mx-auto mt-8">
                 <div className="flex justify-between items-center mb-6">
                     <h1 className="text-2xl font-bold">Hey, Daniel 👋</h1>
@@ -143,17 +143,17 @@ const LinksDashboard = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                     <div className="bg-white p-6 rounded-lg shadow">
                         <h2 className="text-lg font-bold mb-2">Total Clicks</h2>
-                        <p className="text-3xl font-bold">15,242</p>
+                        <p className="text-3xl font-bold">...</p>
                         <p className="text-green-500">+1,310 This week</p>
                     </div>
                     <div className="bg-white p-6 rounded-lg shadow">
                         <h2 className="text-lg font-bold mb-2">Visitors</h2>
-                        <p className="text-3xl font-bold">9,422</p>
+                        <p className="text-3xl font-bold">...</p>
                         <p className="text-red-500">-150 This week</p>
                     </div>
                     <div className="bg-white p-6 rounded-lg shadow">
                         <h2 className="text-lg font-bold mb-2">Unused Link</h2>
-                        <p className="text-3xl font-bold">150</p>
+                        <p className="text-3xl font-bold">...</p>
                         <p className="text-green-500">+10 This week</p>
                     </div>
                 </div>

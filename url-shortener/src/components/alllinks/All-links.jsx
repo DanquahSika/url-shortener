@@ -4,7 +4,7 @@ const Alllinks = () => {
   return (
     <div>
          <div className="bg-white text-zinc-900 transition duration-500 ease-in-out">
-        <div className="contain mx-auto px-4 py-8">
+        <div className="contain  px-4 py-8">
           <h1 className="text-3xl font-bold mb-6">All links</h1>
           <div className="bg-white shadow rounded-lg p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
@@ -41,8 +41,6 @@ const Alllinks = () => {
             <h2 className="text-2xl font-bold mb-6">Stats</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* insert the clicks display here */}
-              <div className="bg-zinc-300 h-64 rounded-lg" />
-              <div className="bg-zinc-300 h-64 rounded-lg" />
               <div className="bg-zinc-300 h-64 rounded-lg" />
               <div className="bg-zinc-300 h-64 rounded-lg" />
             </div>

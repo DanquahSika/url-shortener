@@ -3,13 +3,19 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import session from "express-session";
+import ConnectMongoDBSession from "connect-mongodb-session";
 import userRoutes from "./routes/user.routes.js";
 import linkRoutes from "./routes/link.routes.js";
 
 const port = process.env.PORT || 4000;
+const MongoDBStore = ConnectMongoDBSession(session);
 
 // load env variables
 dotenv.config({ path: [".env.local"] });
+
+const store = new MongoDBStore({
+  uri: process.env.MONGO_URI,
+});
 
 const app = express();
 
@@ -25,6 +31,7 @@ app.use(cors());
 app.use(
   session({
     secret: "adasdasdadasadsa",
+    store: store,
     resave: false,
     saveUninitialized: false,
   })

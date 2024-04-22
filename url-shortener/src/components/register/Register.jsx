@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Links } from "../../pages/ShortenLinks";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import "./register.css";
 
 const Register = () => {
@@ -14,21 +13,61 @@ const Register = () => {
     setIsSignUpMode(false);
   };
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [issSignUpMode, setIssSignUpMode] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handlesSignUpClick = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4000/api/users/register", formData);
+      console.log(response.data);
+      // Redirect or show success message
+    } catch (error) {
+      console.error(error);
+      // Handle error, show error message
+    }
+  };
+
+  const handleLogInClick = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4000/api/users/login", formData);
+      console.log(response.data);
+      // Redirect or show success message
+    } catch (error) {
+      console.error(error);
+      // Handle error, show error message
+    }
+  };
+
+
+
+
+
   return (
-    <div className={`container ${isSignUpMode ? "sign-up-mode" : ""}`}>
+    <div className={`container ${isSignUpMode ? "sign-up-mode" : ""} ${issSignUpMode ? "sign-up-mode" : ""}`}>
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form action="#" className="sign-in-form" onSubmit={handleLogInClick}>
             <h2 className="title">Sign in</h2>
-            <div className="flex">
             <div className="input-field">
-              <i className="fas fa-user" />
-              <input type="text" placeholder="Username" />
-            </div>
-            <div className="input-field">
-              <i className="fas fa-user" />
-              <input type="text" placeholder="Username" />
-            </div>
+              <i className="fas fa-envelope" />
+              <input type="text" placeholder="Email" />
             </div>
             <div className="input-field">
               <i className="fas fa-lock" />
@@ -40,9 +79,9 @@ const Register = () => {
               className="btn-cta rounded-full"
               defaultValue="Sign up"
             >
-              <Link to="/dashboard" className="btn">
+              <a className="btn">
                 Sign in
-              </Link>
+              </a>
             </button>
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
@@ -60,7 +99,7 @@ const Register = () => {
               </a>
             </div>
           </form>
-          <form action="#" className="sign-up-form">
+          <form action="#" className="sign-up-form" onSubmit={handlesSignUpClick}>
             <h2 className="title">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user" />
@@ -79,9 +118,9 @@ const Register = () => {
               className="btn-cta rounded-full"
               defaultValue="Sign up"
             >
-              <Link to="/create" className="btn">
+              <a className="btn">
                 Sign up
-              </Link>
+              </a>
             </button>
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">

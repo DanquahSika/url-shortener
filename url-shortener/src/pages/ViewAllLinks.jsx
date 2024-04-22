@@ -1,12 +1,12 @@
 import React from "react";
 import SidebarMain from "../components/sidebar/SidebarMain";
-import Alllinks from "../components/analytics/All-links";
+import Alllinks from "../components/alllinks/All-links";
 
 const AllLinks = () => {
   return (
-    <div classname="flex ">
+    <div className="flex">
       <SidebarMain />
-      <div className="p-10 m-10">
+      <div className="w-screen">
         <Alllinks />
       </div>
     </div>
