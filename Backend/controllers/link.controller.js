@@ -1,12 +1,27 @@
 import { linkModel } from "../models/link.model.js";
+import ShortUniqueId from "short-unique-id";
+
 
 export const newLink = async (req, res, next) => {
   try {
     // Add link to database
+    const { longUrl, title } = req.body;
     const createLink = await linkModel.create({
       ...req.body,
       userId: req.session.user.id,
     });
+    if (existingLink) {
+      return res.status(400).json({ message: "URL already shortened" });
+    }
+    // const shortCode = generateShortCode();
+    const shortLink = new Link({
+      longUrl,
+      title,
+      shortCode,
+      userId: req.session.user.id,
+    });
+    await shortLink.save();
+    res.status(201).json({ message: "URL shortened successfully", shortLink });
     // return response
     res.status(201).json(createLink);
   } catch (error) {
@@ -18,10 +33,26 @@ export const getAllLinks = async (req, res, next) => {
   try {
     // get all link from database
     const allLinks = await linkModel.find({ userId: req.session.user.id });
+    res.json(
+      links.map((link) => {
+        return {
+          _id: link._id,
+          userId: link.userId,
+          title: link.title,
+          // description: link.description,
+          shortCode: link.shortCode,
+          longUrl: link.longUrl,
+          clicks: link.clicks,
+          shortLink: `${req.protocol}://${req.headers.host}/links/${link.shortCode}`,
+        };
+      })
+    );
     // return response
     res.status(200).json(allLinks);
   } catch (error) {
     next(error);
+    res.status(500).json({ message: "Internal server error" });
+
   }
 };
 

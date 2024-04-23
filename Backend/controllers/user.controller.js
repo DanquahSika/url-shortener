@@ -8,9 +8,9 @@ export const registerUser = async (req, res) => {
       req.body;
 
     // Check if confirmPassword field matches password
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords do not match" });
-    }
+    // if (password !== confirmPassword) {
+    //   return res.status(400).json({ message: "Passwords do not match" });
+    // }
 
     // Check if user with the same email already exists
     const existingUser = await userModel.findOne({ email });
@@ -21,7 +21,11 @@ export const registerUser = async (req, res) => {
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const saltRounds=10
+    console.log("Password:", password);
+  console.log("Salt Rounds:", saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    console.log("Hashed Password:", hashedPassword);
 
     console.log({
       firstName: firstName,

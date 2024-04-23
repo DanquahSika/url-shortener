@@ -9,7 +9,7 @@ const ShortUrlGenerator = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const apiEndpoint = 'https://example.com/api/shorten';
+        const apiEndpoint = 'http://localhost:4000/api/links';
 
         try {
             const response = await fetch(apiEndpoint, {
@@ -24,7 +24,7 @@ const ShortUrlGenerator = () => {
             });
             const data = await response.json();
             console.log('Success:', data);
-            alert('Short link created! Check the console for details.');
+            alert('Short link created!');
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred while creating the short link.');

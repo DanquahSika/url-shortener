@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./register.css";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [isSignUpMode, setIsSignUpMode] = useState(false);
 
   const handleSignUpClick = () => {
@@ -19,59 +21,55 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
-  const [issSignUpMode, setIssSignUpMode] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handlesSignUpClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:4000/api/users/register", formData);
-      console.log(response.data);
-      // Redirect or show success message
-    } catch (error) {
-      console.error(error);
-      // Handle error, show error message
-    }
+    axios
+      .post("http://localhost:4000/api/users/register", formData)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+    navigate("/create");
   };
 
   const handleLogInClick = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:4000/api/users/login", formData);
-      console.log(response.data);
-      // Redirect or show success message
-    } catch (error) {
-      console.error(error);
-      // Handle error, show error message
-    }
+      const response = await axios.post(
+        "http://localhost:4000/api/users/login",
+        formData
+      )
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+      navigate("/create");
   };
 
-
-
-
-
   return (
-    <div className={`container ${isSignUpMode ? "sign-up-mode" : ""} ${issSignUpMode ? "sign-up-mode" : ""}`}>
+    <div className={`container ${isSignUpMode ? "sign-up-mode" : ""}`}>
       <div className="forms-container">
         <div className="signin-signup">
           <form action="#" className="sign-in-form" onSubmit={handleLogInClick}>
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-envelope" />
-              <input type="text" placeholder="Email" />
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock" />
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+              />
             </div>
             {/* button to link */}
             <button
@@ -79,9 +77,7 @@ const Register = () => {
               className="btn-cta rounded-full"
               defaultValue="Sign up"
             >
-              <a className="btn">
-                Sign in
-              </a>
+              <a className="btn">Sign in</a>
             </button>
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
@@ -99,28 +95,61 @@ const Register = () => {
               </a>
             </div>
           </form>
-          <form action="#" className="sign-up-form" onSubmit={handlesSignUpClick}>
+
+          {/* sign up form */}
+          <form action="#" className="sign-up-form" onSubmit={handleSubmit}>
             <h2 className="title">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user" />
-              <input type="text" placeholder="Username" />
+              <input
+                type="text"
+                name="firstName"
+                placeholder="Firstname"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-user" />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Lastname"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-user" />
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                onChange={handleChange}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope" />
-              <input type="email" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock" />
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+              />
             </div>
             <button
               type="submit"
               className="btn-cta rounded-full"
               defaultValue="Sign up"
             >
-              <a className="btn">
-                Sign up
-              </a>
+              <a className="btn">Sign up</a>
             </button>
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
