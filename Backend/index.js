@@ -19,15 +19,9 @@ const store = new MongoDBStore({
 
 const app = express();
 
-// Middleware error handling
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: "Internal server error" });
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(
   session({
     secret: "adasdasdadasadsa",
@@ -40,6 +34,12 @@ app.use(
 //  load routes
 app.use("/api/users", userRoutes);
 app.use("/api/links", linkRoutes);
+
+// Middleware error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Internal server error" });
+});
 
 // Make database  connection
 try {

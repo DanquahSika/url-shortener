@@ -31,20 +31,24 @@ const Register = () => {
     e.preventDefault();
     axios
       .post("http://localhost:4000/api/users/register", formData)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        // navigate("/create");
+      })
       .catch((error) => console.log(error));
-    navigate("/create");
   };
 
   const handleLogInClick = async (e) => {
     e.preventDefault();
-      const response = await axios.post(
-        "http://localhost:4000/api/users/login",
-        formData
-      )
-      .then((response) => console.log(response))
+    const response = await axios
+      .post("http://localhost:4000/api/users/login", formData, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/create");
+      })
       .catch((error) => console.log(error));
-      navigate("/create");
   };
 
   return (

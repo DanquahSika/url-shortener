@@ -21,9 +21,9 @@ export const registerUser = async (req, res) => {
     }
 
     // Hash the password
-    const saltRounds=10
+    const saltRounds = 10;
     console.log("Password:", password);
-  console.log("Salt Rounds:", saltRounds);
+    console.log("Salt Rounds:", saltRounds);
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     console.log("Hashed Password:", hashedPassword);
 
@@ -33,7 +33,7 @@ export const registerUser = async (req, res) => {
       username: username,
       email: email,
       password: hashedPassword,
-    })
+    });
     // Create new user instance
     const user = new userModel({
       firstName: firstName,
@@ -88,7 +88,6 @@ export const logoutUser = async (req, res, next) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
 
 export const profile = async (req, res, next) => {
   try {

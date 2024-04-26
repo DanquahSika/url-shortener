@@ -12,7 +12,7 @@ import { checkSessionUser } from "../middlewares/auth.js";
 const router = Router();
 
 // Define routes
-router.post("/", checkSessionUser, newLink);
+router.post("/", checkSessionUser, newLink)
 
 router.get("/", checkSessionUser, getAllLinks);
 
