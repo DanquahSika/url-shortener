@@ -22,33 +22,54 @@ const Register = () => {
     email: "",
     password: "",
   });
-
+  
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/api/users/register", formData)
-      .then((response) => {
-        console.log(response);
+    try {
+      const response = await fetch("http://localhost:4000/api/users/register",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
         // navigate("/create");
-      })
-      .catch((error) => console.log(error));
+      } else {
+        throw new Error("Failed to register");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-
+  
   const handleLogInClick = async (e) => {
     e.preventDefault();
-    const response = await axios
-      .post("http://localhost:4000/api/users/login", formData, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
+    try {
+      const response = await fetch("http://localhost:4000/api/users/login",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
         navigate("/create");
-      })
-      .catch((error) => console.log(error));
+      } else {
+        throw new Error("Failed to log in");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

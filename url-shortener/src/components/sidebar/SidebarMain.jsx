@@ -2,8 +2,8 @@ import { LayoutDashboard, LifeBuoy, } from "lucide-react";
 import { Link } from "react-router-dom";
 import Sidebar, { SidebarItem } from "./Sidebar.jsx";
 import { IoCreateOutline } from "react-icons/io5";
-import { IoIosLink } from "react-icons/io";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { IoIosLink } from "react-icons/io";;
+import { VscSettingsGear } from "react-icons/vsc";
 
 const SidebarMain = () => {
   return (
@@ -19,8 +19,8 @@ const SidebarMain = () => {
           <Link to="/track">
             <SidebarItem icon={<IoIosLink size={20} />} text="Links" alert />
           </Link>
-          <Link to="/analytics">
-            <SidebarItem icon={<TbBrandGoogleAnalytics size={20} />} text="Reporting" />
+          <Link to="/settings">
+            <SidebarItem icon={<VscSettingsGear size={20} />} text="Setting" />
           </Link>
           <hr className="my-3" />
           {/* <Link to="/settings">

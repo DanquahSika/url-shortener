@@ -1,15 +1,18 @@
 import React from 'react'
+import PieActiveArc from './Pieclicks'
+import Periodclicks from './Periodclicks'
+import BasicBars from './Periodclicks'
 
 const Alllinks = () => {
   return (
     <div>
-         <div className="bg-white text-zinc-900 transition duration-500 ease-in-out">
+         <div className="text-zinc-900 transition duration-500 ease-in-out">
         <div className="contain  px-4 py-8">
           <h1 className="text-3xl font-bold mb-6">All links</h1>
-          <div className="bg-white shadow rounded-lg p-6 mb-8">
+          <div className="bg-cardThree shadow-2 rounded-lg p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
               <input type="text" placeholder="Search short URL" className="border p-2 rounded w-full lg:w-1/3" />
-              <button className="bg-blue-500 text-white p-2 rounded-lg">Search</button>
+              <button className="bg-customOrange text-white p-2 rounded-lg">Search</button>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full leading-normal">
@@ -29,8 +32,8 @@ const Alllinks = () => {
                     <td className="border-b border-zinc-200 p-4 text-sm">17</td>
                     <td className="border-b border-zinc-200 p-4 text-sm">2023-10-13</td>
                     <td className="border-b border-zinc-200 p-4 text-right">
-                      <button className="text-blue-500 hover:text-blue-600">Edit</button>
-                      <button className="text-red-500 hover:text-red-600 ml-2">Delete</button>
+                      <button className="text-blue-500 hover:text-blue-600 ml-2 px-2 rounded-lg bg-zinc-300">Edit</button>
+                      <button className="text-red-500 hover:text-red-600 ml-2 px-2 rounded-lg bg-zinc-300">Delete</button>
                     </td>
                   </tr>
                 </tbody>
@@ -41,8 +44,8 @@ const Alllinks = () => {
             <h2 className="text-2xl font-bold mb-6">Stats</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* insert the clicks display here */}
-              <div className="bg-zinc-300 h-64 rounded-lg" />
-              <div className="bg-zinc-300 h-64 rounded-lg" />
+              <div className="bg-zinc-300 h-64 rounded-lg"><PieActiveArc/></div>
+              <div className="bg-zinc-300 h-64 rounded-lg"><BasicBars/></div>
             </div>
           </div>
         </div>

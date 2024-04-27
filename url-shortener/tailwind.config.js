@@ -11,8 +11,11 @@ export default {
         customOrange: '#EF7415',
         customBlack: '#0A0A05',
         customBrown: '#4F4A45',
-        customHov: '#B8D699',
-        customOre: '#F8EEE1'
+        customHov: '#F8DFCE',
+        customOre: '#F8EEE1',
+        cardTwo: '#F9F3F1',
+        cardOne: '#F8EEE1',
+        cardThree: '#E9E8EA'
       },
     },
   },

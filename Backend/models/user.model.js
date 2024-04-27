@@ -8,4 +8,12 @@ const userSchema = new Schema({
   password: { type: String, required: true },
 });
 
+userSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform: (doc, ret) => {
+    delete ret._id;
+  }
+});
+
 export const userModel = model("User", userSchema, "users");
