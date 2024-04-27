@@ -1,15 +1,15 @@
 import React from "react";
 import SidebarMain from "../components/sidebar/SidebarMain";
-import Shortener from "../components/landingpage/Shortener";
-import Custom from "../components/Custom";
+import ShortUrlGenerator from "../components/shortener/Shortener";
+
 
 export const Links = () => {
   return (
-    <div className="flex ">
+    <div className="flex bg-">
       <SidebarMain />
-      <div>
-        <Shortener/>
-        <Custom />
+      <div className="w-screen">
+      <ShortUrlGenerator/>
+        {/* <Custom /> */}
       </div>
     </div>
   );

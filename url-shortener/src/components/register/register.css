@@ -74,8 +74,8 @@ form.sign-in-form {
   width: 100%;
   background-color: #f0f0f0;
   margin: 10px 0;
-  height: 55px;
-  border-radius: 5px;
+  height: 40px;
+  border-radius: 8px;
   display: grid;
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
@@ -87,7 +87,7 @@ form.sign-in-form {
   line-height: 55px;
   color: #acacac;
   transition: 0.5s;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .input-field input {
@@ -102,7 +102,7 @@ form.sign-in-form {
 
 .input-field input::placeholder {
   color: #aaa;
-  font-weight: 500;
+  font-weight: 200;
 }
 
 .social-text {
