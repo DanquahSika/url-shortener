@@ -14,13 +14,26 @@ export const newLink = async (req, res, next) => {
       shortCode,
       userId: req.session.user.id,
     });
-    res.status(201).json({ message: "URL shortened successfully", createLink });
+    // return the created link as JSON response
+    // res.send(createLink.json())
+    res.status(201).json({
+      message: "URL shortened successfully",
+      link: {
+        _id: createLink._id,
+        userId: createLink.userId,
+        title: createLink.title,
+        shortCode: createLink.shortCode,
+        originalUrl: createLink.originalUrl,
+        clicks: createLink.clicks,
+        createdAt: createLink.createdAt,
+        updatedAt: createLink.updatedAt,
+        shortLink: `${req.protocol}://${req.headers.host}/api/links/${createLink.shortCode}`,
+      },
+    });
   } catch (error) {
     next(error);
   }
 };
-
-
 
 export const getAllLinks = async (req, res, next) => {
   try {
@@ -36,10 +49,11 @@ export const getAllLinks = async (req, res, next) => {
         shortCode: link.shortCode,
         originalUrl: link.originalUrl,
         clicks: link.clicks,
-        shortLink: `${req.protocol}://${req.headers.host}/links/${link.shortCode}`,
+        createdAt: link.createdAt,
+        updatedAt: link.updatedAt,
+        shortLink: `${req.protocol}://${req.headers.host}/api/links/${link.shortCode}`,
       };
     });
-
     // return the formatted links as JSON response
     res.status(200).json(formattedLinks);
   } catch (error) {
@@ -50,6 +64,7 @@ export const getAllLinks = async (req, res, next) => {
 
 export const openLink = async (req, res, next) => {
   try {
+    console.log(req.params);
     const { shortcode } = req.params;
     const link = await linkModel.findOne({ shortCode: shortcode });
 
@@ -57,12 +72,20 @@ export const openLink = async (req, res, next) => {
       return res.status(404).json({ message: "Link not found" });
     }
 
+    console.log(link);
     // Increase click count
     link.clicks++;
     await link.save();
 
     // Redirect to the original URL
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
     res.redirect(link.originalUrl);
+    // res.status(200).json({ message: "shortened URL", link });
   } catch (error) {
     next(error);
   }

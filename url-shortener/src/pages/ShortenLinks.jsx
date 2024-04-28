@@ -9,7 +9,6 @@ export const Links = () => {
       <SidebarMain />
       <div className="w-screen">
       <ShortUrlGenerator/>
-        {/* <Custom /> */}
       </div>
     </div>
   );

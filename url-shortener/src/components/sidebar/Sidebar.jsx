@@ -11,7 +11,7 @@ export default function Sidebar({ children }) {
 
         <>
             <aside className="h-screen">
-                <nav className="h-full flex flex-col bg-customBrown border-r shadow-sm">
+                <nav className="h-full flex flex-col bg-customOrange border-r shadow-sm">
                     <div className="p-4 pb-2 flex justify-between items-center">
                         <img src={logo} className={`overflow-hidden transition-all ${expanded ? "w-24" : "w-0"}`} />
                         <button onClick={() => setExpanded((curr) => !curr)} className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"> 
@@ -56,7 +56,7 @@ export function SidebarItem({ icon, text, alert }) {
         className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
           active
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-gray-600"
+            : "hover:bg-cardTwo text-gray-600"
         }`}
         onClick={handleClick} // Call handleClick on click event
       >

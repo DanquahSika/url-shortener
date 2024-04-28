@@ -6,6 +6,7 @@ import { Links } from './pages/ShortenLinks'
 import Landing from './pages/Landing';
 import AllLinks from './pages/ViewAllLinks';
 import Settings from './pages/Settings';
+import Analytics from './pages/Analytics';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard /> } />
         <Route path='/settings' element={<Settings/> } />
         <Route path='/track' element={<AllLinks/> } />
+        <Route path='/analytics' element={<Analytics/> } />
         {/* <Route path='/sign' element={<SidebarMain /> } /> */}
       </Routes>
     </BrowserRouter>

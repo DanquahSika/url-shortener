@@ -6,7 +6,7 @@ const Settings = () => {
   return (
     <div className='flex'>
         <SidebarMain/>
-        <div>
+        <div className='w-screen px-20'>
         <ProfilePage/>
         </div>
         

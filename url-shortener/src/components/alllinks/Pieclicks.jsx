@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
-import { colors } from '@mui/material';
 
 const data = [
   { id: 0, value: 10, },
