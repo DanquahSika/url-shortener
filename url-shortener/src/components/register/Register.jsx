@@ -12,7 +12,8 @@ const Register = () => {
   };
 
   const handleSignInClick = () => {
-    setIsSignUpMode(false);
+    setIsSignUpMode(true);
+    useNavigate('/create')
   };
 
   const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ const Register = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        // navigate("/create");
+        navigate("/signin");
       } else {
         throw new Error("Failed to register");
       }
@@ -174,7 +175,7 @@ const Register = () => {
               className="btn-cta rounded-full"
               defaultValue="Sign up"
             >
-              <a className="btn">Sign up</a>
+              <a className="btn" onClick={handleSignInClick}>Sign up</a>
             </button>
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
@@ -199,7 +200,7 @@ const Register = () => {
           <div className="content">
             <h3>Shorten Your Loooong Links :) </h3>
             <p>
-              is an efficient and easy-to-use URL shortening service that
+             An efficient and easy-to-use URL shortening service that
               streamlines your online experience.
             </p>
             <button

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const tableCellClasses = 'px-5 py-5 border-b border-zinc-200 bg-white text-sm';
 const positiveClicksClass = 'text-green-500';
@@ -32,6 +33,22 @@ const LinksDashboard = () => {
         fetchData();
     }, []);
 
+    const [userInfo, setUserInfo] = useState([]);
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/users/me',
+                {withCredentials: true});
+                console.log(response.data);
+                setUserInfo(response.data);    
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchUserInfo();
+    }, []);
+
     const handleNewLinkClick = () => {
     };
 
@@ -41,8 +58,8 @@ const LinksDashboard = () => {
             <div className="contain mx-auto mt-8">
                 <div className="flex justify-between items-center mb-6">
                     {/* fetch user */}
-                    <h1 className="text-2xl font-bold">Hey, Daniel 👋</h1>
-                    <div className="text-sm">26 June 2024</div>
+                    <h1 className="text-2xl font-bold">Hey, {userInfo.firstName} 👋</h1>
+                    <div className="text-sm bold">30 April 2024</div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                     <div className="bg-customHov p-6 rounded-lg shadow">
@@ -52,8 +69,8 @@ const LinksDashboard = () => {
                     </div>
                     <div className="bg-cardOne p-6 rounded-lg shadow">
                     <h2 className="text-lg font-bold mb-2">Visitors</h2>
-                        <p className="text-3xl font-bold">...</p>
-                        <p className="text-red-500">-150 This week</p>
+                        <p className="text-3xl font-bold">0</p>
+                        <p className="text-red-500">0 This week</p>
                     </div>
                     <div className="bg-cardTwo p-6 rounded-lg shadow">
                         <h2 className="text-lg font-bold mb-2">Unused Link</h2>
@@ -65,8 +82,8 @@ const LinksDashboard = () => {
                 <div className="bg-cardThree p-6 rounded-lg shadow mb-8">
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-bold">My Links</h2>
-                        <button onClick={handleNewLinkClick} className="bg-customOrange hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            New Link
+                        <button className="bg-customOrange text-white font-bold py-2 px-4 rounded">
+                           <Link to='/create'>New Link</Link> 
                         </button>
                     </div>
                     <div className="overflow-x-auto">
@@ -98,7 +115,6 @@ const LinksTable = ({ allLinks }) => {
                     <th className="px-5 py-3 border-b-2 border-zinc-200 bg-zinc-100 text-left text-xs font-semibold text-zinc-600 uppercase tracking-wider">Link</th>
                     <th className="px-5 py-3 border-b-2 border-zinc-200 bg-zinc-100 text-left text-xs font-semibold text-zinc-600 uppercase tracking-wider">Clicks</th>
                     <th className="px-5 py-3 border-b-2 border-zinc-200 bg-zinc-100 text-left text-xs font-semibold text-zinc-600 uppercase tracking-wider">Date Created</th>
-                    <th className="px-5 py-3 border-b-2 border-zinc-200 bg-zinc-100 text-left text-xs font-semibold text-zinc-600 uppercase tracking-wider">Date Updated</th>
                     <th className="px-5 py-3 border-b-2 border-zinc-200 bg-zinc-100 text-left text-xs font-semibold text-zinc-600 uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
@@ -111,7 +127,6 @@ const LinksTable = ({ allLinks }) => {
                             {link.clicks > 0 ? `+${link.clicks}` : link.clicks}
                         </td>
                         <td className={tableCellClasses}>{formatDate(link.createdAt)}</td>
-                        <td className={tableCellClasses}>{formatDate(link.updatedAt)}</td>
                         <td className={tableCellClasses}>
                             <button className="text-zinc-500 hover:text-zinc-700">
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

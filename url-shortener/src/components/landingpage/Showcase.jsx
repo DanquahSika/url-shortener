@@ -1,4 +1,5 @@
 import showcase from "../../assets/undraw1.svg"
+import { Link } from "react-router-dom"
 
 export default function Showcase() {
   return (
@@ -13,11 +14,11 @@ export default function Showcase() {
               Build your brand’s recognition and get detailed insights on how
               your links are performing.
             </p>
-            <button className="btn-cta rounded-full">Get Started</button>
+            <button className="btn-cta rounded-full"><Link to ="/sign">Get Started</Link></button>
           </article>
 
           <article>
-            <img src={showcase} alt="Shortly" />
+            <img src={showcase} alt="Simply" />
           </article>
         </div>
       </section>

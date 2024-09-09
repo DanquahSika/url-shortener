@@ -101,7 +101,7 @@ const ShortUrlGenerator = () => {
               </label>
               <input
                 type="text"
-                className="flex-grow p-1.5 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-customBrown focus:border-transparent"
+                className="flex-grow m-1.5 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-customBrown focus:border-transparent"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -128,15 +128,15 @@ const ShortUrlGenerator = () => {
       <div className="flex-1">
         <label
           htmlFor="shortUrl"
-          className="block text-sm font-medium text-zinc-700"
+          className="block text-sm pl-5 font-medium text-zinc-700"
         >
           Your short URL
         </label>
-        <div className="mt-1 relative rounded-md shadow-sm">
+        <div className="mt-1  px-5 relative rounded-md shadow-sm">
           <input
             type="text"
             id="shortUrl"
-            className="block w-full pl-3 pr-12 sm:text-sm border-zinc-300 focus:ring-customBrown rounded-md"
+            className="block pl-3 pr-3 w-full sm:text-sm border-zinc-300 focus:ring-customBrown rounded-md"
             placeholder="shorturl"
             value={shortenedUrl}
             onChange={(e) => setShortenedUrl(e.target.value)}

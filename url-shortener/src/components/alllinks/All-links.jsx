@@ -4,7 +4,6 @@ import axios from "axios";
 const Alllinks = () => {
   const [shortenedLinks, setShortenedLinks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [deletedLinkId, setDeletedLinkId] = useState(null);
 
   useEffect(() => {
     fetchShortenedLinks();
@@ -40,15 +39,15 @@ const Alllinks = () => {
     return new Date(dateString).toLocaleDateString("en-US", options);
   };
 
-  const handleDeleteLink = async (id) => {
-    try {
-      const response = await axios.delete(`http://localhost:4000/api/links/${id}`, 
-      { withCredentials: true });
-      console.log(response.data);
-                setDeletedLinkId(response.data);
-    } catch (error) {
-      console.error("Error deleting link:", error);
-    }
+  const handleDeleteLink = (_id) => { 
+    // try { 
+    //   const response = await axios.delete(`http://localhost:4000/api/links/${id}`, { withCredentials: true }); 
+    //   console.log(response); 
+    //   setShortenedLinks(shortenedLinks.filter((link) => link.id !== id));
+    // } catch (error) { 
+    //   console.error("Error deleting link:", error); 
+    // } 
+    setShortenedLinks(shortenedLinks.filter((link) => link._id !== _id));
   };
 
   return (
@@ -80,6 +79,9 @@ const Alllinks = () => {
                       Original URL
                     </th>
                     <th className="border-b-2 border-zinc-200 p-2 text-left text-xs font-semibold uppercase tracking-wider">
+                      Title
+                    </th>
+                    <th className="border-b-2 border-zinc-200 p-2 text-left text-xs font-semibold uppercase tracking-wider">
                       Short URL
                     </th>
                     <th className="border-b-2 border-zinc-200 p-2 text-left text-xs font-semibold uppercase tracking-wider">
@@ -93,10 +95,13 @@ const Alllinks = () => {
                 </thead>
                 <tbody>
                   {shortenedLinks.map((link) => (
-                    <tr key={link.id}>
+                    <tr key={link._id}>
                       {/* Table data */}
-                      <td className="border-b border-zinc-200 p-2 text-sm">
+                      <td className="border-b border-zinc-200 p-2 text-sm max-w-15">
                         {link.originalUrl}
+                      </td>
+                      <td className="border-b border-zinc-200 p-2 text-sm">
+                        {link.title}
                       </td>
                       <td className="border-b border-zinc-200 p-2 text-sm">
                         {link.shortLink}
@@ -110,11 +115,10 @@ const Alllinks = () => {
                       <td className="border-b border-zinc-200 p-2 text-right">
                         <button
                           className="text-blue-500 hover:text-blue-600 ml-2 px-2 rounded-lg bg-zinc-300"
-                          onClick={() => handleEditLink(link.id)}
                         >
                           Edit
                         </button>
-                        <button className="text-red-500 hover:text-red-600 ml-2 px-2 rounded-lg bg-zinc-300"onClick={() => handleDeleteLink(link)}>
+                        <button className="text-red-500 hover:text-red-600 ml-2 px-2 rounded-lg bg-zinc-300"onClick={()=>handleDeleteLink(link._id)}>
                           Delete
                         </button>       
                         </td>

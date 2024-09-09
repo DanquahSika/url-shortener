@@ -2,7 +2,7 @@ import facebook from "../../assets/images/icon-facebook.svg"
 import twitter from "../../assets/images/icon-twitter.svg"
 import pinterest from "../../assets/images/icon-pinterest.svg"
 import instagram from "../../assets/images/icon-instagram.svg"
-import logo from "../../assets/images/footer-logo.svg"
+import logo from "../../assets/logo.png"
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
       <footer className="bg-customBrown py-10 lg:py-20">
         <div className="max-width grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-5">
           <article>
-            <img src={logo} alt="" />
+            <img src={logo} alt="Simply" className="mr-6" />
           </article>
 
           <article>

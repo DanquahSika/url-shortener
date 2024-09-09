@@ -1,5 +1,5 @@
 import { useState } from "react"
-import logo from "../../assets/images/logo.svg"
+import logo from "../../assets/logo.png"
 import { Link } from "react-router-dom"
 
 export default function Header() {
@@ -10,7 +10,7 @@ export default function Header() {
       <header className="header max-width py-5">
         <div className="flex items-center justify-between">
           <article className="flex items-center">
-            <img src={logo} alt="" />
+            <img src={logo} alt="Simply" className="h-20 mb-2 mr-4" />
 
             <nav className="hidden md:block md:ml-5">
               <ul className="flex items-start justify-start">
@@ -35,7 +35,7 @@ export default function Header() {
                   <button className="text-slate-400"></button>
                 </li>
                 <li>
-                  <button className="btn-cta rounded-full">Sign Up</button>
+                  <button className="btn-cta rounded-full"><Link to ="/sign"></Link></button>
                 </li>
               </ul>
             </div>

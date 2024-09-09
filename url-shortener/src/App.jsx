@@ -22,7 +22,7 @@ function App() {
         <Route path='/settings' element={<Settings/> } />
         <Route path='/track' element={<AllLinks/> } />
         <Route path='/analytics' element={<Analytics/> } />
-        {/* <Route path='/sign' element={<SidebarMain /> } /> */}
+        <Route path='/signin' element={<Signpage /> } />
       </Routes>
     </BrowserRouter>
   );

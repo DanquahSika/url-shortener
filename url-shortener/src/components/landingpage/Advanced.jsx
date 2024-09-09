@@ -1,6 +1,6 @@
-import brand from "../../assets/images/icon-brand-recognition.svg"
-import records from "../../assets/images/icon-detailed-records.svg"
-import fully from "../../assets/images/icon-fully-customizable.svg"
+import brand from "../../assets/icon-brand-recognition.png"
+import records from "../../assets/icon-detailed-records.png"
+import fully from "../../assets/icon-fully-customizable.png"
 
 export default function Advanced() {
   return (
@@ -21,7 +21,7 @@ export default function Advanced() {
               <img
                 src={brand}
                 alt=""
-                className="p-3 -mt-12 bg-slate-800 rounded-full"
+                className="p-3 -mt-12 bg-customOrange rounded-full"
               />
               <h3 className="text-slate-800 text-lg mt-5 mb-2 font-bold">
                 Brand Recognition
@@ -37,7 +37,7 @@ export default function Advanced() {
               <img
                 src={records}
                 alt=""
-                className="p-3 -mt-12 bg-slate-800 rounded-full"
+                className="p-3 -mt-12 bg-customOrange rounded-full"
               />
               <h3 className="text-slate-800 text-lg mt-5 mb-2 font-bold">
                 Detailed Records
@@ -53,10 +53,10 @@ export default function Advanced() {
               <img
                 src={fully}
                 alt=""
-                className="p-3 -mt-12 bg-slate-800 rounded-full"
+                className="p-3 -mt-12 bg-customOrange rounded-full"
               />
               <h3 className="text-slate-800 text-lg mt-5 mb-2 font-bold">
-                Fully Customizable
+                Fully Trackable
               </h3>
               <p className="text-slate-400 text-sm">
                 Improve brand awareness and content discoverability through
